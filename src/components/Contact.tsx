@@ -36,41 +36,66 @@ export default function Contact() {
           </h2>
         </motion.div>
         
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, type: "spring" }}
-          className="max-w-2xl mx-auto text-center mt-12 glass-card p-12 rounded-[2rem] border border-white/10"
-        >
+        <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-stretch mt-12">
           
-          <motion.p 
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-slate-400 text-lg mb-12 leading-relaxed"
+          {/* Portrait Photo */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, type: "spring", delay: 0.2 }}
+            className="w-full lg:w-1/3 relative rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group h-[400px] lg:h-auto"
           >
-            I&apos;m currently looking for new opportunities. Whether you have a question, a project idea, or just want to say hi, I&apos;ll try my best to get back to you!
-          </motion.p>
-          
-          <motion.a
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ delay: 0.5 }}
-            href="mailto:contact@example.com"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-blue-500 text-blue-400 rounded-lg font-medium hover:bg-blue-500 hover:text-white transition-all duration-300"
+            <img
+              src="/IMG_6176.jpg"
+              alt="Granthik Som"
+              className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#0a0f25]/80 via-transparent to-amber-500/10 mix-blend-overlay pointer-events-none" />
+            <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(255,255,255,0.05)] pointer-events-none" />
+          </motion.div>
+
+          {/* Contact Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, type: "spring", delay: 0.4 }}
+            className="flex-1 text-left glass-card p-10 lg:p-16 rounded-[2rem] border border-white/10 flex flex-col justify-center relative overflow-hidden group"
           >
-            <motion.div
-               animate={{ rotate: [0, -10, 10, -10, 10, 0] }}
-               transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3 }}
-            >
-              <Mail size={20} />
-            </motion.div>
-            Say Hello
-          </motion.a>
-        </motion.div>
+            {/* Ambient hover glow */}
+            <div className="absolute -inset-20 bg-amber-500/10 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full z-0" />
+            
+            <div className="relative z-10">
+              <motion.p 
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="text-slate-400 text-lg lg:text-xl mb-12 leading-relaxed max-w-xl"
+              >
+                I&apos;m currently looking for new opportunities. Whether you have a question, a project idea, or just want to say hi, I&apos;ll try my best to get back to you!
+              </motion.p>
+              
+              <motion.a
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(245, 158, 11, 0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ delay: 0.6 }}
+                href="mailto:contact@example.com"
+                className="inline-flex items-center gap-4 px-10 py-5 bg-transparent border-2 border-amber-500 text-amber-400 rounded-2xl font-bold uppercase tracking-widest hover:bg-amber-500 hover:text-[#0a0f25] transition-all duration-300"
+              >
+                <motion.div
+                   animate={{ rotate: [0, -10, 10, -10, 10, 0] }}
+                   transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3 }}
+                >
+                  <Mail size={24} />
+                </motion.div>
+                Say Hello
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

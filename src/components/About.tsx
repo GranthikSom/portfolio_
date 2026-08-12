@@ -41,29 +41,62 @@ export default function About() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          {/* Image Section */}
+          {/* Editorial Image Collage Section */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={imageVariants}
-            className="relative justify-self-center lg:justify-self-start perspective-1000"
+            className="relative justify-self-center lg:justify-self-start w-full max-w-[500px] lg:max-w-[600px] h-[600px] perspective-1000"
           >
+            {/* Primary Portrait */}
             <motion.div 
-              whileHover={{ scale: 1.05, rotateY: -10, rotateX: 5 }}
+              whileHover={{ scale: 1.05, rotateY: -10, rotateX: 5, zIndex: 30 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative w-full max-w-[500px] lg:max-w-[600px] aspect-[4/5] rounded-2xl overflow-hidden border border-slate-700 shadow-[0_0_40px_rgba(255,255,255,0.05)] group"
+              className="absolute top-0 right-0 w-3/4 aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.5)] group z-20"
             >
               <img
-                src="/uploaded_media_1786481538963.jpg"
+                src="/IMG_4412.jpg"
                 alt="Granthik Som portrait"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale-[40%] hover:grayscale-0 mix-blend-luminosity hover:mix-blend-normal"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f25]/90 via-transparent to-transparent opacity-60 mix-blend-overlay pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(255,255,255,0.05)] pointer-events-none" />
+            </motion.div>
+
+            {/* Secondary Photo (Offset Left) */}
+            <motion.div 
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              whileHover={{ scale: 1.05, rotateZ: -5, zIndex: 30 }}
+              className="absolute bottom-10 left-0 w-1/2 aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.6)] group z-30"
+            >
+              <img
+                src="/IMG_5902.jpg"
+                alt="Workspace"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale-[60%] hover:grayscale-0 mix-blend-luminosity hover:mix-blend-normal"
+              />
+              <div className="absolute inset-0 bg-amber-500/10 mix-blend-color pointer-events-none group-hover:opacity-0 transition-opacity" />
+            </motion.div>
+
+            {/* Third Photo (Background Layer) */}
+            <motion.div 
+              initial={{ x: 50, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="absolute -top-10 left-10 w-2/5 aspect-[4/3] rounded-2xl overflow-hidden border border-white/5 shadow-lg group z-10 opacity-70 blur-[1px] hover:blur-none hover:opacity-100 transition-all duration-500"
+            >
+              <img
+                src="/IMG_6176.jpg"
+                alt="Process"
+                className="w-full h-full object-cover grayscale"
+              />
+              <div className="absolute inset-0 bg-cyan-500/20 mix-blend-overlay pointer-events-none" />
             </motion.div>
             
-            {/* Decorative background element for image */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-3xl blur-2xl -z-10 animate-pulse" />
+            {/* Decorative background element for collage */}
+            <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-gradient-to-tr from-amber-600/20 to-violet-600/20 rounded-full blur-[80px] -z-10 animate-pulse" />
           </motion.div>
 
           {/* Text Section */}

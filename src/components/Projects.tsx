@@ -122,10 +122,19 @@ export default function Projects() {
                 className={`${spanClass} ${offsetClass} glass-card rounded-[2rem] p-8 lg:p-10 flex flex-col h-full group relative overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-[0_20px_60px_rgba(45,212,191,0.15)] hover:-translate-y-2`}
               >
                 {/* Decorative Japanese-inspired accent line */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 via-cyan-400 to-violet-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 via-cyan-400 to-violet-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left z-20" />
                 
                 {/* Background glow on hover */}
-                <div className="absolute -inset-20 bg-cyan-400/10 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full" />
+                <div className="absolute -inset-20 bg-cyan-400/10 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full z-0" />
+                
+                {/* Embedded workspace photo for featured projects */}
+                {index === 0 && (
+                  <div className="absolute inset-y-0 right-0 w-2/3 md:w-1/2 z-0 opacity-10 group-hover:opacity-30 mix-blend-luminosity grayscale group-hover:grayscale-[50%] transition-all duration-700 pointer-events-none overflow-hidden">
+                    <img src="/IMG_5902.jpg" alt="Creative workspace" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" />
+                    {/* Gradient mask to blend the photo into the card background */}
+                    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#0a0f25]/50 to-[#0a0f25] mix-blend-normal" />
+                  </div>
+                )}
                 
                 <div className="flex justify-between items-start mb-10 relative z-10">
                   <motion.div 
