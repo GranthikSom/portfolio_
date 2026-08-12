@@ -1,0 +1,338 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
+import { FaGithub, FaLinkedin, FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import dynamic from 'next/dynamic';
+
+const YouTube = dynamic(() => import('react-youtube'), { ssr: false });
+
+const playlist = [
+  { id: "dQw4w9WgXcQ", title: "Never Gonna Give You Up", artist: "Rick Astley" },
+  { id: "oRdxUFDoQe0", title: "Beat It", artist: "Michael Jackson" },
+  { id: "fJ9rUzIMcZQ", title: "Bohemian Rhapsody", artist: "Queen" },
+  { id: "L_jWHffIx5E", title: "All Star", artist: "Smash Mouth" },
+  { id: "1w7OgIMMRc4", title: "Sweet Child O' Mine", artist: "Guns N' Roses" },
+  { id: "btPJPFnesV4", title: "Eye of the Tiger", artist: "Survivor" },
+  { id: "djV11Xbc914", title: "Take On Me", artist: "a-ha" },
+  { id: "T6wbugWrfLU", title: "Hotel California", artist: "Eagles" },
+  { id: "hT_nvWreIhg", title: "Counting Stars", artist: "OneRepublic" },
+  { id: "Zi_XLOBDo_Y", title: "Billie Jean", artist: "Michael Jackson" },
+];
+
+export default function Hero() {
+  const [text, setText] = useState("");
+  const fullText = "GRANTHIK SOM";
+
+  // Music Player State
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [player, setPlayer] = useState<any>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isPlaying && player) {
+      interval = setInterval(async () => {
+        try {
+          const time = await player.getCurrentTime();
+          const dur = await player.getDuration();
+          if (time !== undefined) setCurrentTime(time);
+          if (dur !== undefined) setDuration(dur);
+        } catch (e) {
+          // ignore
+        }
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying, player]);
+
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const time = Number(e.target.value);
+    setCurrentTime(time);
+    if (player) {
+      player.seekTo(time, true);
+    }
+  };
+
+  const formatTime = (time: number) => {
+    if (!time || isNaN(time)) return "0:00";
+    const m = Math.floor(time / 60);
+    const s = Math.floor(time % 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  };
+
+  useEffect(() => {
+    let i = 0;
+    const timer = setInterval(() => {
+      if (i < fullText.length) {
+        setText((prev) => prev + fullText.charAt(i));
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 100);
+    return () => clearInterval(timer);
+  }, []);
+
+  const togglePlay = () => {
+    if (!player) return;
+    if (isPlaying) {
+      player.pauseVideo();
+    } else {
+      player.playVideo();
+    }
+  };
+
+  const playNext = () => {
+    setCurrentIdx((prev) => {
+      let nextIdx = Math.floor(Math.random() * playlist.length);
+      if (nextIdx === prev && playlist.length > 1) {
+        nextIdx = (nextIdx + 1) % playlist.length;
+      }
+      return nextIdx;
+    });
+  };
+
+  const playPrev = () => {
+    setCurrentIdx((prev) => {
+      let nextIdx = Math.floor(Math.random() * playlist.length);
+      if (nextIdx === prev && playlist.length > 1) {
+        nextIdx = (nextIdx + 1) % playlist.length;
+      }
+      return nextIdx;
+    });
+  };
+
+  useEffect(() => {
+    if (player && isPlaying) {
+      setTimeout(() => {
+        player.playVideo();
+      }, 500);
+    }
+  }, [currentIdx, player]);
+
+  const currentSong = playlist[currentIdx];
+
+  return (
+    <section className="min-h-screen relative flex items-center justify-start pt-32 px-6 overflow-hidden">
+      {/* Giant Decorative Typography */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full text-left pointer-events-none opacity-[0.04] z-0 overflow-hidden mix-blend-overlay">
+        <h1 className="text-[25vw] font-black leading-[0.8] tracking-tighter text-white whitespace-nowrap ml-[-5vw]">
+          ENGINEER
+        </h1>
+        <h1 className="text-[25vw] font-black leading-[0.8] tracking-tighter text-white whitespace-nowrap ml-[10vw]">
+          DESIGNER
+        </h1>
+      </div>
+
+      <div className="container mx-auto relative z-10 w-full flex flex-col lg:flex-row justify-between items-start lg:items-center gap-20">
+        
+        {/* Left Side: Bio - Asymmetrical and oversized */}
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, type: "spring", bounce: 0.4 }}
+          className="flex-1 relative z-20 pt-10"
+        >
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="text-orange-400 font-bold mb-4 tracking-[0.4em] flex items-center gap-4 text-xs md:text-sm uppercase"
+          >
+            <motion.span 
+              animate={{ width: [10, 40, 10] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              className="h-[2px] bg-orange-400 inline-block"
+            />
+            HI, I AM
+          </motion.p>
+          
+          <div className="relative mb-8 md:mb-12 inline-block">
+            <h1 className="text-[12vw] lg:text-[7vw] font-black leading-[0.85] tracking-tighter text-white uppercase drop-shadow-2xl">
+              {text}
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ repeat: Infinity, duration: 0.8 }}
+                className="inline-block w-[1.5vw] h-[8vw] lg:h-[5vw] bg-pink-500 ml-2 lg:ml-4 align-bottom"
+              />
+            </h1>
+            {/* Layered colored shadow/offset for the name */}
+            <h1 className="text-[12vw] lg:text-[7vw] font-black leading-[0.85] tracking-tighter text-orange-500/30 uppercase absolute top-2 -left-3 -z-10 blur-sm pointer-events-none">
+              {fullText}
+            </h1>
+          </div>
+          
+          <div className="lg:ml-16 max-w-xl relative border-l-2 border-white/10 pl-6 lg:pl-10">
+            <motion.h2 
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ delay: 1.5, duration: 1 }}
+              className="text-2xl md:text-4xl font-black mb-6 text-pink-50 leading-tight"
+            >
+              I build <span className="text-gradient">modern applications</span><br className="hidden md:block"/> & <span className="text-gradient">system utilities</span>.
+            </motion.h2>
+            
+            <motion.p 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              transition={{ delay: 2, duration: 0.8 }}
+              className="text-pink-200/80 leading-relaxed text-lg mb-10 font-medium"
+            >
+              Software Engineer specializing in front-end development, macOS system utilities, and highly optimized mobile apps. Passionate about sleek UIs and event-driven architectures.
+            </motion.p>
+            
+            <div className="flex gap-4">
+              {[
+                { icon: FaGithub, link: "https://github.com/GranthikSom" },
+                { icon: FaLinkedin, link: "https://www.linkedin.com/in/kaun-granthik12345678/" },
+                { icon: Mail, link: "mailto:contact@example.com" }
+              ].map((social, idx) => (
+                <motion.a
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ delay: 2.5 + idx * 0.1, type: "spring" }}
+                  whileHover={{ 
+                    scale: 1.1, 
+                    y: -5,
+                    boxShadow: "0 10px 25px rgba(244, 114, 182, 0.3)",
+                    backgroundColor: "rgba(255, 255, 255, 0.1)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white/5 backdrop-blur-md rounded-2xl transition-all border border-white/10 hover:border-pink-500"
+                >
+                  <social.icon className="w-6 h-6 text-white" />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+        
+        {/* Right Side: Music Player - Floating and overlapping */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 100 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.2, type: "spring", bounce: 0.4 }}
+          className="relative z-30 w-full lg:w-[400px] lg:absolute lg:right-10 lg:bottom-10 xl:right-20 xl:bottom-20"
+        >
+          {/* Dynamic background glow based on current song */}
+          <div 
+            className="absolute -inset-10 blur-[100px] opacity-30 group-hover:opacity-50 saturate-[2] transition-all duration-1000 -z-10 rounded-full" 
+            style={{ backgroundImage: `url(https://img.youtube.com/vi/${currentSong.id}/hqdefault.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center' }} 
+          />
+          
+          <div className="glass-card relative overflow-hidden rounded-[2.5rem] p-8 border border-white/20 shadow-2xl flex flex-col items-center bg-black/40 backdrop-blur-3xl group transition-all duration-500 hover:shadow-[0_30px_80px_rgba(0,0,0,0.8)] hover:-translate-y-2">
+            
+            <div className="w-full flex justify-between items-center mb-8 px-2 relative z-10">
+              <span className="text-xs font-black tracking-[0.2em] text-pink-400 uppercase">Now Playing</span>
+              <div className="flex gap-1.5 items-end h-4">
+                <motion.div animate={isPlaying ? { height: [4, 16, 4] } : { height: 4 }} transition={{ repeat: Infinity, duration: 0.8 }} className="w-1 bg-orange-400 rounded-sm" />
+                <motion.div animate={isPlaying ? { height: [8, 12, 8] } : { height: 4 }} transition={{ repeat: Infinity, duration: 0.5 }} className="w-1 bg-pink-500 rounded-sm" />
+                <motion.div animate={isPlaying ? { height: [4, 14, 4] } : { height: 4 }} transition={{ repeat: Infinity, duration: 0.6 }} className="w-1 bg-purple-400 rounded-sm" />
+              </div>
+            </div>
+
+            <div className="absolute w-0 h-0 opacity-0 pointer-events-none overflow-hidden -z-50">
+              <YouTube 
+                videoId={currentSong.id} 
+                opts={{ playerVars: { autoplay: 0 } }} 
+                onReady={(e: any) => setPlayer(e.target)}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onEnd={playNext}
+              />
+            </div>
+
+            <motion.div 
+              animate={{ rotate: isPlaying ? 360 : 0 }}
+              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              className="w-56 h-56 rounded-full overflow-hidden mb-8 relative border-4 border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-center bg-black group-hover:scale-105 transition-transform duration-500"
+            >
+              <img 
+                src={`https://img.youtube.com/vi/${currentSong.id}/hqdefault.jpg`} 
+                alt="Album Cover"
+                className="w-full h-full object-cover scale-150 opacity-90"
+              />
+              <div className="absolute inset-0 rounded-full border border-white/10" style={{ background: 'radial-gradient(circle, transparent 30%, rgba(0,0,0,0.6) 100%)' }} />
+              <div className="absolute inset-2 rounded-full border border-white/10" />
+              <div className="absolute inset-8 rounded-full border border-white/5" />
+              
+              <div className="absolute w-14 h-14 bg-zinc-900 rounded-full border-4 border-zinc-800 shadow-inner flex items-center justify-center z-10">
+                <div className="w-4 h-4 bg-black rounded-full shadow-inner" />
+              </div>
+            </motion.div>
+
+            <div className="text-center mb-8 w-full px-2 relative z-10">
+              <h3 className="text-2xl font-black text-white truncate mb-2 drop-shadow-lg tracking-tight">{currentSong.title}</h3>
+              <p className="text-pink-200/60 font-bold text-xs tracking-[0.2em] uppercase">{currentSong.artist}</p>
+            </div>
+
+            <div className="w-full flex flex-col gap-4 mb-8 relative z-10">
+              <div className="relative group/slider w-full h-2 flex items-center">
+                <input 
+                  type="range" 
+                  min={0} 
+                  max={duration || 100} 
+                  value={currentTime} 
+                  onChange={handleSeek}
+                  className="absolute w-full h-full opacity-0 cursor-pointer z-20"
+                />
+                <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden z-0 backdrop-blur-sm">
+                  <div 
+                    className="h-full bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 transition-all duration-300 ease-linear shadow-[0_0_10px_rgba(244,114,182,0.8)]"
+                    style={{ width: `${(currentTime / (duration || 1)) * 100}%` }}
+                  />
+                </div>
+                <div 
+                  className="absolute h-4 w-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,1)] z-10 pointer-events-none transition-transform duration-200 group-hover/slider:scale-125"
+                  style={{ left: `calc(${(currentTime / (duration || 1)) * 100}% - 8px)` }}
+                />
+              </div>
+              
+              <div className="flex justify-between text-[10px] text-pink-200/60 font-bold font-mono tracking-widest">
+                <span>{formatTime(currentTime)}</span>
+                <span>{formatTime(duration)}</span>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center gap-8 w-full relative z-10">
+              <motion.button 
+                whileHover={{ scale: 1.2, color: "#fff" }} whileTap={{ scale: 0.9 }}
+                onClick={playPrev} 
+                className="p-2 text-pink-200/60 transition-colors"
+              >
+                <FaStepBackward size={20} />
+              </motion.button>
+              
+              <motion.button 
+                whileHover={{ scale: 1.1, boxShadow: "0 0 30px rgba(244,114,182,0.6)" }} 
+                whileTap={{ scale: 0.95 }}
+                onClick={togglePlay} 
+                className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-2xl transition-all"
+              >
+                {isPlaying ? <FaPause size={22} /> : <FaPlay size={22} className="ml-1" />}
+              </motion.button>
+
+              <motion.button 
+                whileHover={{ scale: 1.2, color: "#fff" }} whileTap={{ scale: 0.9 }}
+                onClick={playNext} 
+                className="p-2 text-pink-200/60 transition-colors"
+              >
+                <FaStepForward size={20} />
+              </motion.button>
+            </div>
+            
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

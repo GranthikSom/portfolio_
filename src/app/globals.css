@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Semantic colors */
+  --color-background: #172554;
+  --color-foreground: #fdf2f8;
+  --color-primary: #fb923c;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #c084fc;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #f472b6;
+  --color-accent-foreground: #ffffff;
+  --color-muted: #818cf8;
+  --color-muted-foreground: #e0e7ff; 
+
+  /* Override hardcoded slate and blue colors to match our theme */
+  --color-slate-950: #0a0f25;
+  --color-slate-900: #0f172a; /* Midnight Blue */
+  --color-slate-800: #1e1b4b; /* Deep Indigo */
+  --color-slate-700: #312e81; /* Indigo */
+  --color-slate-600: #4c1d95; /* Muted Violet */
+  --color-slate-500: #8b5cf6; /* Violet */
+  --color-slate-400: #2dd4bf; /* Soft Cyan text */
+  --color-slate-300: #a78bfa; /* Muted Violet text */
+  --color-slate-200: #c4b5fd;
+  --color-slate-100: #e0e7ff;
+  --color-slate-50: #f8fafc;
+  
+  --color-blue-600: #d97706; /* Dim Amber */
+  --color-blue-500: #fbbf24; /* Amber Lighting */
+  --color-blue-400: #67e8f9; /* Soft Cyan for hovers */
+  --color-blue-300: #a5f3fc;
+  
+  --color-black: #0f172a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background-color: transparent;
+    color: var(--color-foreground);
+    font-family: var(--font-inter), sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(30, 27, 75, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(30, 27, 75, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(30, 27, 75, 0.3), inset 0 0 30px rgba(255, 255, 255, 0.15), 0 0 20px rgba(244, 114, 182, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #fb923c, #f472b6, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
