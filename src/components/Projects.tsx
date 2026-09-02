@@ -5,6 +5,20 @@ import { FaGithub } from "react-icons/fa";
 
 const projects = [
   {
+    title: "Sedo",
+    description: "An open-source motorcycle dashboard application built with Flutter, providing real-time data and metrics for Android and iOS.",
+    tech: ["Dart", "Flutter", "Mobile App"],
+    github: "https://github.com/GranthikSom/sedo",
+    stars: 0,
+  },
+  {
+    title: "Musix",
+    description: "A full-featured music streaming application built with Flutter and a Dart Frog backend. Features audio controls, track skipping, and album browsing.",
+    tech: ["Dart", "Flutter", "Dart Frog"],
+    github: "https://github.com/GranthikSom/musix",
+    stars: 0,
+  },
+  {
     title: "VerticalBar",
     description: "A sleek, event-driven, zero-polling workspace widget built for Übersicht on macOS. Optimizes CPU and battery usage.",
     tech: ["JavaScript", "macOS", "Übersicht"],
@@ -12,40 +26,35 @@ const projects = [
     stars: 1,
   },
   {
-    title: "macOS Dotfiles",
-    description: "My personal dotfiles for macOS. Includes configurations for AeroSpace, Neovim, Tmux, and Zsh for a highly optimized developer workflow.",
-    tech: ["Shell", "Lua", "Nix"],
-    github: "https://github.com/GranthikSom/dotfiles",
-    stars: 3,
+    title: "Ratatui Snake Game",
+    description: "A terminal-based implementation of the classic Snake game using the Ratatui library for fast rendering in Rust.",
+    tech: ["Rust", "Terminal UI", "Ratatui"],
+    github: "https://github.com/GranthikSom/ratatui-snake-game",
+    stars: 2,
   },
   {
     title: "Weather App",
-    description: "A feature-rich weather application built for mobile devices with real-time updates and location-based forecasting.",
+    description: "A feature-rich weather application with location-based forecasting, real-time temperature updates, and dynamic Lottie animations.",
     tech: ["Dart", "Flutter", "API Integration"],
     github: "https://github.com/GranthikSom/Weather-app-",
     stars: 4,
   },
   {
-    title: "Portfolio Website",
-    description: "The highly interactive personal portfolio you are looking at right now. Built with severe glassmorphism aesthetics and advanced Framer Motion animations.",
-    tech: ["Next.js", "Tailwind", "Framer Motion"],
-    github: "https://github.com/GranthikSom/portfolio",
-    stars: 5,
-  },
-  {
-    title: "Ratatui Snake Game",
-    description: "A terminal-based implementation of the classic Snake game using the Ratatui library for fast rendering.",
-    tech: ["Rust", "Terminal UI"],
-    github: "https://github.com/GranthikSom/ratatui-snake-game",
-    stars: 2,
-  },
-  {
-    title: "Ubersicht AeroSpace Config",
-    description: "A lightweight status bar featuring workspace tracking, multi-monitor awareness, and running app icons.",
-    tech: ["JavaScript", "macOS", "AeroSpace"],
-    github: "https://github.com/GranthikSom/Ubersicht-and-aeroSpace-config",
+    title: "Tone",
+    description: "A minimalist, offline music player built specifically for audiophiles, focusing on high-quality playback and clean aesthetics.",
+    tech: ["Dart", "Flutter", "Audio"],
+    github: "https://github.com/GranthikSom/Tone",
     stars: 0,
   }
+];
+
+const projectImages = [
+  "/IMG_5902.jpg",
+  "/IMG_1666.jpg",
+  "/IMG_6176.jpg",
+  "/IMG_20221231_154948_Original.jpg",
+  "/IMG_5668.jpg",
+  "/IMG_4412.jpg"
 ];
 
 export default function Projects() {
@@ -127,14 +136,11 @@ export default function Projects() {
                 {/* Background glow on hover */}
                 <div className="absolute -inset-20 bg-cyan-400/10 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full z-0" />
                 
-                {/* Embedded workspace photo for featured projects */}
-                {index === 0 && (
-                  <div className="absolute inset-y-0 right-0 w-2/3 md:w-1/2 z-0 opacity-10 group-hover:opacity-30 mix-blend-luminosity grayscale group-hover:grayscale-[50%] transition-all duration-700 pointer-events-none overflow-hidden">
-                    <img src="/IMG_5902.jpg" alt="Creative workspace" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" />
-                    {/* Gradient mask to blend the photo into the card background */}
-                    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#0a0f25]/50 to-[#0a0f25] mix-blend-normal" />
-                  </div>
-                )}
+                {/* Embedded workspace photo for all projects */}
+                <div className="absolute inset-y-0 right-0 w-2/3 md:w-1/2 z-0 opacity-10 group-hover:opacity-30 mix-blend-luminosity grayscale group-hover:grayscale-[50%] transition-all duration-700 pointer-events-none overflow-hidden">
+                  <img src={projectImages[index % projectImages.length]} alt="Project background" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" />
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#0a0f25]/80 to-[#0a0f25] mix-blend-normal" />
+                </div>
                 
                 <div className="flex justify-between items-start mb-10 relative z-10">
                   <motion.div 

@@ -94,7 +94,22 @@ export default function About() {
               />
               <div className="absolute inset-0 bg-cyan-500/20 mix-blend-overlay pointer-events-none" />
             </motion.div>
-            
+
+            {/* Fourth Photo */}
+            <motion.div 
+              initial={{ x: -50, y: -50, opacity: 0 }}
+              whileInView={{ x: 0, y: 0, opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+              className="absolute top-1/2 -right-10 w-2/5 aspect-[4/5] rounded-2xl overflow-hidden border border-white/5 shadow-lg group z-10 opacity-70 blur-[1px] hover:blur-none hover:opacity-100 transition-all duration-500 hover:scale-105 hover:z-40"
+            >
+              <img
+                src="/IMG_1666.jpg"
+                alt="Collage Image 1"
+                className="w-full h-full object-cover grayscale hover:grayscale-0"
+              />
+              <div className="absolute inset-0 bg-pink-500/20 mix-blend-overlay pointer-events-none group-hover:opacity-0 transition-opacity" />
+            </motion.div>
+
             {/* Decorative background element for collage */}
             <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-gradient-to-tr from-amber-600/20 to-violet-600/20 rounded-full blur-[80px] -z-10 animate-pulse" />
           </motion.div>

@@ -53,7 +53,7 @@ const playlist = [
 
 export default function Hero() {
   const [text, setText] = useState("");
-  const fullText = "GRANTHIK SOM";
+  const fullText = "Granthik Som";
 
   // Music Player State
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -105,16 +105,17 @@ export default function Hero() {
 
   useEffect(() => {
     let i = 0;
+    setText("");
     const timer = setInterval(() => {
       if (i < fullText.length) {
-        setText((prev) => prev + fullText.charAt(i));
+        setText(fullText.slice(0, i + 1));
         i++;
       } else {
         clearInterval(timer);
       }
     }, 100);
     return () => clearInterval(timer);
-  }, []);
+  }, [fullText]);
 
   const togglePlay = () => {
     if (!player) return;
@@ -191,7 +192,7 @@ export default function Hero() {
           </motion.p>
           
           <div className="relative mb-8 md:mb-12 inline-block">
-            <h1 className="text-[12vw] lg:text-[7vw] font-black leading-[0.85] tracking-tighter text-white uppercase drop-shadow-2xl">
+            <h1 className="text-[12vw] lg:text-[7vw] font-black leading-[0.85] tracking-tighter text-white drop-shadow-2xl">
               {text}
               <motion.span
                 animate={{ opacity: [1, 0, 1] }}
@@ -200,7 +201,7 @@ export default function Hero() {
               />
             </h1>
             {/* Layered colored shadow/offset for the name */}
-            <h1 className="text-[12vw] lg:text-[7vw] font-black leading-[0.85] tracking-tighter text-orange-500/30 uppercase absolute top-2 -left-3 -z-10 blur-sm pointer-events-none">
+            <h1 className="text-[12vw] lg:text-[7vw] font-black leading-[0.85] tracking-tighter text-orange-500/30 absolute top-2 -left-3 -z-10 blur-sm pointer-events-none">
               {fullText}
             </h1>
           </div>
@@ -228,7 +229,7 @@ export default function Hero() {
               {[
                 { icon: FaGithub, link: "https://github.com/GranthikSom" },
                 { icon: FaLinkedin, link: "https://www.linkedin.com/in/kaun-granthik12345678/" },
-                { icon: Mail, link: "mailto:contact@example.com" }
+                { icon: Mail, link: "mailto:granthiksom@gmail.com" }
               ].map((social, idx) => (
                 <motion.a
                   key={idx}

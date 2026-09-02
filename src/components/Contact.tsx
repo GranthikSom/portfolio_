@@ -47,7 +47,7 @@ export default function Contact() {
             className="w-full lg:w-1/3 relative rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group h-[400px] lg:h-auto"
           >
             <img
-              src="/IMG_6176.jpg"
+              src="/IMG_5668.jpg"
               alt="Granthik Som"
               className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
             />
@@ -82,7 +82,7 @@ export default function Contact() {
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(245, 158, 11, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ delay: 0.6 }}
-                href="mailto:contact@example.com"
+                href="mailto:granthiksom@gmail.com"
                 className="inline-flex items-center gap-4 px-10 py-5 bg-transparent border-2 border-amber-500 text-amber-400 rounded-2xl font-bold uppercase tracking-widest hover:bg-amber-500 hover:text-[#0a0f25] transition-all duration-300"
               >
                 <motion.div

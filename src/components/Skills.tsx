@@ -55,13 +55,30 @@ export default function Skills() {
             Skills
           </h2>
         </motion.div>
-          
+        <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start mt-12">
+          {/* Decorative Photo Section */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, type: "spring", delay: 0.2 }}
+            className="w-full lg:w-1/3 relative rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group h-[500px] lg:sticky lg:top-32"
+          >
+            <img
+              src="/IMG_1666.jpg"
+              alt="Workspace and Skills"
+              className="w-full h-full object-cover grayscale-[40%] hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#0a0f25]/80 via-transparent to-blue-500/10 mix-blend-overlay pointer-events-none" />
+            <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(255,255,255,0.05)] pointer-events-none" />
+          </motion.div>
+
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid md:grid-cols-2 gap-8"
+            className="flex-1 w-full grid md:grid-cols-2 gap-8"
           >
             {skills.map((skillGroup, index) => (
               <motion.div
@@ -96,6 +113,7 @@ export default function Skills() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
       </div>
     </section>
   );
