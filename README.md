@@ -54,3 +54,4 @@ Next.js applications can be exported to static HTML and hosted on GitHub Pages.
 - Tailwind CSS
 - Framer Motion
 - Lucide React
+# portfolio_
