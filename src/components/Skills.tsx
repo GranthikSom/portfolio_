@@ -22,12 +22,12 @@ export default function Skills() {
 
   const cardVariants = {
     hidden: { opacity: 0, scale: 0.8, rotateX: -20 },
-    visible: { opacity: 1, scale: 1, rotateX: 0, transition: { duration: 0.6, type: "spring" } },
+    visible: { opacity: 1, scale: 1, rotateX: 0, transition: { duration: 0.6, type: "spring" as const } },
   };
 
   const tagVariants = {
     hidden: { opacity: 0, scale: 0 },
-    visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 200, damping: 10 } },
+    visible: { opacity: 1, scale: 1, transition: { type: "spring" as const, stiffness: 200, damping: 10 } },
     hover: { scale: 1.1, backgroundColor: "rgba(59, 130, 246, 0.2)", borderColor: "rgba(59, 130, 246, 0.5)" }
   };
 

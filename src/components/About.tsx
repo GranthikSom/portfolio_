@@ -11,7 +11,7 @@ export default function About() {
   
   const imageVariants = {
     hidden: { opacity: 0, x: -50, rotateY: 30 },
-    visible: { opacity: 1, x: 0, rotateY: 0, transition: { duration: 0.8, type: "spring" } }
+    visible: { opacity: 1, x: 0, rotateY: 0, transition: { duration: 0.8, type: "spring" as const } }
   };
 
   return (

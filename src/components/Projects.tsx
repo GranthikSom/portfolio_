@@ -68,7 +68,7 @@ export default function Projects() {
 
   const projectVariants = {
     hidden: { opacity: 0, y: 100, rotateX: 10 },
-    visible: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.8, type: "spring", bounce: 0.4 } },
+    visible: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.8, type: "spring" as const, bounce: 0.4 } },
   };
 
   return (
