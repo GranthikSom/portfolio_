@@ -22,7 +22,7 @@ const projects = [
     title: "VerticalBar",
     description: "A sleek, event-driven, zero-polling workspace widget built for Übersicht on macOS. Optimizes CPU and battery usage.",
     tech: ["JavaScript", "macOS", "Übersicht"],
-    github: "https://github.com/GranthikSom/VerticalBar",
+    github: "https://tracesof.net/uebersicht-widgets/#VerticalBar",
     stars: 1,
   },
   {
@@ -49,12 +49,12 @@ const projects = [
 ];
 
 const projectImages = [
-  "/IMG_5902.jpg",
+  "/sedo.gif",
   "/IMG_1666.jpg",
-  "/IMG_6176.jpg",
-  "/IMG_20221231_154948_Original.jpg",
-  "/IMG_5668.jpg",
-  "/IMG_4412.jpg"
+  "/verticalbar.gif",
+  "/ratatui.gif",
+  "/weatherapp.png",
+  "/tone.png"
 ];
 
 export default function Projects() {
@@ -102,33 +102,36 @@ export default function Projects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 pb-20"
+          className="grid grid-cols-2 md:grid-cols-12 gap-4 lg:gap-10 pb-20"
         >
           {projects.map((project, index) => {
             // Create a broken grid, asymmetrical layout
-            let spanClass = "md:col-span-6 lg:col-span-4"; // default
+            let spanClass = "col-span-2 md:col-span-6 lg:col-span-4"; // default
             let offsetClass = "";
             
             if (index % 5 === 0) {
-              spanClass = "md:col-span-12 lg:col-span-8"; // large featured
+              spanClass = "col-span-2 md:col-span-12 lg:col-span-8"; // large featured
             } else if (index % 5 === 1) {
-              spanClass = "md:col-span-6 lg:col-span-4";
+              spanClass = "col-span-1 md:col-span-6 lg:col-span-4";
               offsetClass = "lg:translate-y-24"; // staggered
             } else if (index % 5 === 2) {
-              spanClass = "md:col-span-6 lg:col-span-5 lg:col-start-2";
+              spanClass = "col-span-1 md:col-span-6 lg:col-span-5 lg:col-start-2";
             } else if (index % 5 === 3) {
-              spanClass = "md:col-span-12 lg:col-span-6";
+              spanClass = "col-span-2 md:col-span-12 lg:col-span-6";
               offsetClass = "lg:-translate-y-12";
             } else if (index % 5 === 4) {
-              spanClass = "md:col-span-6 lg:col-span-5";
+              spanClass = "col-span-2 md:col-span-6 lg:col-span-5";
               offsetClass = "lg:translate-y-16";
             }
 
             return (
-              <motion.div
+              <motion.a
                 key={index}
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
                 variants={projectVariants}
-                className={`${spanClass} ${offsetClass} glass-card rounded-[2rem] p-8 lg:p-10 flex flex-col h-full group relative overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-[0_20px_60px_rgba(45,212,191,0.15)] hover:-translate-y-2`}
+                className={`${spanClass} ${offsetClass} glass-card rounded-[2rem] p-5 md:p-8 lg:p-10 flex flex-col h-full group relative overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-[0_20px_60px_rgba(45,212,191,0.15)] hover:-translate-y-2 block`}
               >
                 {/* Decorative Japanese-inspired accent line */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 via-cyan-400 to-violet-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left z-20" />
@@ -137,48 +140,39 @@ export default function Projects() {
                 <div className="absolute -inset-20 bg-cyan-400/10 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full z-0" />
                 
                 {/* Embedded workspace photo for all projects */}
-                <div className="absolute inset-y-0 right-0 w-2/3 md:w-1/2 z-0 opacity-10 group-hover:opacity-30 mix-blend-luminosity grayscale group-hover:grayscale-[50%] transition-all duration-700 pointer-events-none overflow-hidden">
-                  <img src={projectImages[index % projectImages.length]} alt="Project background" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" />
-                  <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#0a0f25]/80 to-[#0a0f25] mix-blend-normal" />
+                <div className="absolute inset-0 w-full h-full z-0 opacity-90 md:opacity-40 md:group-hover:opacity-70 transition-all duration-700 pointer-events-none overflow-hidden">
+                  <img src={projectImages[index % projectImages.length]} alt="Project background" className={`w-full h-full object-cover ${index === 2 ? 'object-left' : 'object-center'} scale-110 group-hover:scale-100 transition-transform duration-1000`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f25] via-[#0a0f25]/70 to-[#0a0f25]/20 mix-blend-multiply" />
                 </div>
                 
-                <div className="flex justify-between items-start mb-10 relative z-10">
-                  <motion.div 
-                    whileHover={{ rotate: 180 }}
-                    transition={{ duration: 0.5, type: "spring" }}
-                    className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center text-cyan-400 shadow-inner group-hover:bg-cyan-500/20 transition-all duration-300"
-                  >
-                    <FaGithub size={28} />
-                  </motion.div>
-                  <div className="flex gap-4">
-                    <motion.a 
-                      whileHover={{ scale: 1.2, color: "#2dd4bf" }}
-                      href={project.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-slate-400 transition-colors bg-black/20 p-3 rounded-full hover:bg-black/40"
+                <div className="flex justify-start items-start mb-6 md:mb-10 relative z-10 min-h-[40px] md:min-h-[56px]">
+                  {index !== 2 && (
+                    <motion.div 
+                      whileHover={{ rotate: 180 }}
+                      transition={{ duration: 0.5, type: "spring" }}
+                      className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center text-cyan-400 shadow-inner group-hover:bg-cyan-500/20 transition-all duration-300"
                     >
-                      <FaGithub size={20} />
-                    </motion.a>
-                  </div>
+                      <FaGithub className="w-5 h-5 md:w-7 md:h-7" />
+                    </motion.div>
+                  )}
                 </div>
                 
-                <h3 className="text-3xl font-black mb-4 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amber-500 group-hover:to-cyan-400 transition-all duration-300 relative z-10 tracking-tight">
+                <h3 className="text-xl md:text-3xl font-black mb-3 md:mb-4 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amber-500 group-hover:to-cyan-400 transition-all duration-300 relative z-10 tracking-tight">
                   {project.title}
                 </h3>
                 
-                <p className="text-slate-300/80 text-base lg:text-lg mb-8 flex-grow relative z-10 font-medium leading-relaxed group-hover:text-white transition-colors duration-300">
+                <p className="hidden md:block text-slate-300/80 text-base lg:text-lg mb-8 flex-grow relative z-10 font-medium leading-relaxed group-hover:text-white transition-colors duration-300">
                   {project.description}
                 </p>
                 
-                <ul className="flex flex-wrap gap-3 text-xs font-bold tracking-widest uppercase text-slate-500 relative z-10 mt-auto">
+                <ul className="hidden md:flex flex-wrap gap-3 text-xs font-bold tracking-widest uppercase text-slate-500 relative z-10 mt-auto">
                   {project.tech.map((t, i) => (
                     <li key={i} className="px-3 py-1.5 rounded-md bg-white/5 border border-white/5 group-hover:border-cyan-500/30 group-hover:text-cyan-300 transition-all duration-300">
                       {t}
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </motion.a>
             );
           })}
         </motion.div>

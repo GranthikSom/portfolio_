@@ -157,7 +157,7 @@ export default function Hero() {
   const currentSong = playlist[currentIdx];
 
   return (
-    <section className="min-h-screen relative flex items-center justify-start pt-32 px-6 overflow-hidden">
+    <section className="min-h-screen relative flex items-end justify-start pb-8 px-8 md:pb-16 md:px-16 pt-32 overflow-hidden">
       {/* Giant Decorative Typography */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full text-left pointer-events-none opacity-[0.04] z-0 overflow-hidden mix-blend-overlay">
         <h1 className="text-[25vw] font-black leading-[0.8] tracking-tighter text-white whitespace-nowrap ml-[-5vw]">
@@ -168,30 +168,16 @@ export default function Hero() {
         </h1>
       </div>
 
-      <div className="container mx-auto relative z-10 w-full flex flex-col lg:flex-row justify-between items-start lg:items-center gap-20">
+      <div className="w-full relative z-10 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-20">
         
         {/* Left Side: Bio - Asymmetrical and oversized */}
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-          className="flex-1 relative z-20 pt-10"
+          className="flex-1 relative z-20"
         >
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-orange-400 font-bold mb-4 tracking-[0.4em] flex items-center gap-4 text-xs md:text-sm uppercase"
-          >
-            <motion.span 
-              animate={{ width: [10, 40, 10] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              className="h-[2px] bg-orange-400 inline-block"
-            />
-            HI, I AM
-          </motion.p>
-          
-          <div className="relative mb-8 md:mb-12 inline-block">
+          <div className="relative mb-4 md:mb-8 inline-block">
             <h1 className="text-[12vw] lg:text-[7vw] font-black leading-[0.85] tracking-tighter text-white drop-shadow-2xl">
               {text}
               <motion.span
@@ -206,24 +192,15 @@ export default function Hero() {
             </h1>
           </div>
           
-          <div className="lg:ml-16 max-w-xl relative border-l-2 border-white/10 pl-6 lg:pl-10">
+          <div className="max-w-xl relative mt-4">
             <motion.h2 
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ delay: 1.5, duration: 1 }}
-              className="text-2xl md:text-4xl font-black mb-6 text-pink-50 leading-tight"
+              className="text-2xl md:text-4xl font-black mb-8 text-pink-50 leading-tight"
             >
               I build <span className="text-gradient">modern applications</span><br className="hidden md:block"/> & <span className="text-gradient">system utilities</span>.
             </motion.h2>
-            
-            <motion.p 
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              transition={{ delay: 2, duration: 0.8 }}
-              className="text-pink-200/80 leading-relaxed text-lg mb-10 font-medium"
-            >
-              Software Engineer specializing in front-end development, macOS system utilities, and highly optimized mobile apps. Passionate about sleek UIs and event-driven architectures.
-            </motion.p>
             
             <div className="flex gap-4">
               {[
@@ -255,39 +232,14 @@ export default function Hero() {
           </div>
         </motion.div>
         
-        {/* Right Side: Visuals (Primary Photo) */}
-        <div className="relative z-30 w-full lg:w-[45%] flex justify-center lg:justify-end items-center mt-12 lg:mt-0">
-          
-          {/* Primary Cinematic Photo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 1.5, type: "spring", bounce: 0.3, delay: 0.2 }}
-            className="relative w-full max-w-sm lg:max-w-lg aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.6)] border border-white/10 group"
-          >
-            <motion.div
-               animate={{ y: [0, -15, 0] }}
-               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-               className="w-full h-full"
-            >
-              <img 
-                src="/IMG_4412.jpg" 
-                alt="Granthik Som"
-                className="w-full h-full object-cover grayscale-[30%] brightness-90 contrast-125 mix-blend-luminosity group-hover:grayscale-0 group-hover:mix-blend-normal transition-all duration-1000 scale-105"
-              />
-              {/* Glass Overlay & Lighting */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/20 via-transparent to-orange-400/10 mix-blend-overlay pointer-events-none" />
-              <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)] pointer-events-none" />
-            </motion.div>
-          </motion.div>
-        </div>
+
           {/* Music Player - Responsive Slide-out */}
           <motion.div
             initial={isMobile ? { x: "120%", y: 0 } : { y: "-120%", x: 0 }}
             animate={isMobile ? { x: "calc(100% - 40px)", y: 0 } : { y: "calc(-100% + 40px)", x: 0 }}
             whileHover={isMobile ? { x: 0, y: 0 } : { y: 0, x: 0 }}
             transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
-            className={`fixed z-50 w-[350px] lg:w-[400px] group ${isMobile ? "top-20 right-0" : "top-0 right-0"}`}
+            className={`fixed z-50 w-[350px] lg:w-[400px] group hidden md:block ${isMobile ? "top-20 right-0" : "top-0 right-0"}`}
           >
             {/* Dynamic background glow based on current song */}
             <div 

@@ -3,10 +3,9 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { category: "Languages", items: ["JavaScript", "TypeScript", "Dart", "Solidity", "Rust", "C++", "Move", "C"] },
+  { category: "Languages", items: ["JavaScript", "TypeScript", "Dart", "Rust", "C++", "C"] },
   { category: "Frameworks & Libraries", items: ["Next.js", "React", "Flutter", "Tailwind CSS", "Framer Motion"] },
-  { category: "Tools & OS", items: ["Git", "macOS Configuration", "Übersicht", "AeroSpace"] },
-  { category: "Web3", items: ["Smart Contracts", "On-chain Verification", "Tokenization"] }
+  { category: "Tools & OS", items: ["Git", "macOS Configuration", "Übersicht", "AeroSpace"] }
 ];
 
 export default function Skills() {
@@ -65,7 +64,7 @@ export default function Skills() {
             className="w-full lg:w-1/3 relative rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group h-[500px] lg:sticky lg:top-32"
           >
             <img
-              src="/IMG_1666.jpg"
+              src="/skills.gif"
               alt="Workspace and Skills"
               className="w-full h-full object-cover grayscale-[40%] hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
             />
