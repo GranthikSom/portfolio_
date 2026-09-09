@@ -6,8 +6,8 @@ export default function AnimatedBackground() {
   const { scrollY } = useScroll();
   
   // Crossfade between city and underground world based on scroll
-  const opacityCity = useTransform(scrollY, [0, 600, 1000], [1, 1, 0]);
-  const opacityUnderground = useTransform(scrollY, [0, 600, 1000], [0, 0, 1]);
+  const opacityCity = useTransform(scrollY, [0, 500, 700], [1, 1, 0]);
+  const opacityUnderground = useTransform(scrollY, [0, 500, 700], [0, 0, 1]);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-10] bg-[#0a0f25]">
@@ -42,15 +42,16 @@ export default function AnimatedBackground() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-screen blur-[3px]"
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen blur-[3px]"
         >
           <source src="/background2.mp4" type="video/mp4" />
         </video>
         
         {/* Dark Overlay for depth, atmosphere, and readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f25]/90 via-[#1e1b4b]/70 to-[#0a0f25]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f25]/95 via-[#1e1b4b]/88 to-[#0a0f25]/95" />
         {/* Dim Amber / Muted Violet lighting overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/30 via-transparent to-amber-900/20 mix-blend-color" />
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/30 via-transparent to-amber-900/10 mix-blend-color" />
       </motion.div>
       
     </div>

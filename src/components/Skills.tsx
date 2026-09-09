@@ -67,6 +67,7 @@ export default function Skills() {
               src="/skills.gif"
               alt="Workspace and Skills"
               className="w-full h-full object-cover grayscale-[40%] hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-[#0a0f25]/80 via-transparent to-blue-500/10 mix-blend-overlay pointer-events-none" />
             <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(255,255,255,0.05)] pointer-events-none" />
@@ -103,7 +104,7 @@ export default function Skills() {
                       key={i}
                       variants={tagVariants}
                       whileHover="hover"
-                      className="px-4 py-2 bg-slate-800/80 text-slate-300 rounded-lg text-sm font-medium border border-slate-700 transition-colors cursor-default"
+                      className="px-4 py-2.5 bg-slate-800/80 text-slate-300 rounded-lg text-sm md:text-base font-medium border border-slate-700 transition-colors cursor-default"
                     >
                       {item}
                     </motion.span>

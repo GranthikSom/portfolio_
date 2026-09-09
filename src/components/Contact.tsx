@@ -71,7 +71,7 @@ export default function Contact() {
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="text-slate-400 text-lg lg:text-xl mb-12 leading-relaxed max-w-xl"
+                className="text-slate-400 text-base md:text-lg lg:text-xl mb-12 leading-relaxed md:leading-8 max-w-xl"
               >
                 I&apos;m currently looking for new opportunities. Whether you have a question, a project idea, or just want to say hi, I&apos;ll try my best to get back to you!
               </motion.p>

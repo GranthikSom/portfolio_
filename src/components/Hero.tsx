@@ -247,7 +247,7 @@ export default function Hero() {
               style={{ backgroundImage: `url(https://img.youtube.com/vi/${currentSong.id}/hqdefault.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center' }} 
             />
             
-            <div className={`glass-card relative overflow-hidden p-8 shadow-2xl flex flex-col items-center bg-black/60 backdrop-blur-3xl transition-all duration-500 hover:shadow-[0_30px_80px_rgba(0,0,0,0.8)] ${isMobile ? "rounded-l-[2.5rem] border-y border-l border-white/20 pl-12" : "rounded-bl-[2.5rem] pt-12 border-l border-b border-white/20"}`}>
+            <div className={`glass-card relative overflow-hidden p-8 shadow-2xl flex flex-col items-center bg-black/60 backdrop-blur-xl transition-all duration-500 hover:shadow-[0_30px_80px_rgba(0,0,0,0.8)] ${isMobile ? "rounded-l-[2.5rem] border-y border-l border-white/20 pl-12" : "rounded-bl-[2.5rem] pt-12 border-l border-b border-white/20"}`}>
               
               {/* Little tab to indicate hoverable area when hidden */}
               {isMobile ? (

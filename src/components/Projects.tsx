@@ -141,7 +141,7 @@ export default function Projects() {
                 
                 {/* Embedded workspace photo for all projects */}
                 <div className="absolute inset-0 w-full h-full z-0 opacity-90 md:opacity-40 md:group-hover:opacity-70 transition-all duration-700 pointer-events-none overflow-hidden">
-                  <img src={projectImages[index % projectImages.length]} alt="Project background" className={`w-full h-full object-cover ${index === 2 ? 'object-left' : 'object-center'} scale-110 group-hover:scale-100 transition-transform duration-1000`} />
+                  <img src={projectImages[index % projectImages.length]} alt="Project background" loading="lazy" className={`w-full h-full object-cover ${index === 2 ? 'object-left' : 'object-center'} scale-110 group-hover:scale-100 transition-transform duration-1000`} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f25] via-[#0a0f25]/70 to-[#0a0f25]/20 mix-blend-multiply" />
                 </div>
                 
@@ -161,13 +161,13 @@ export default function Projects() {
                   {project.title}
                 </h3>
                 
-                <p className="hidden md:block text-slate-300 text-base lg:text-lg mb-8 flex-grow relative z-10 font-medium leading-relaxed group-hover:text-white transition-colors duration-300">
+                <p className="text-slate-300 text-sm md:text-base lg:text-lg mb-8 flex-grow relative z-10 font-medium leading-relaxed group-hover:text-white transition-colors duration-300">
                   {project.description}
                 </p>
                 
-                <ul className="hidden md:flex flex-wrap gap-3 text-xs font-bold tracking-widest uppercase text-slate-500 relative z-10 mt-auto">
+                <ul className="flex flex-wrap gap-2 md:gap-3 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-300 relative z-10 mt-auto">
                   {project.tech.map((t, i) => (
-                    <li key={i} className="px-3 py-1.5 rounded-md bg-white/5 border border-white/5 group-hover:border-cyan-500/30 group-hover:text-cyan-300 transition-all duration-300">
+                    <li key={i} className="px-3 py-2 rounded-md bg-white/8 border border-white/15 group-hover:border-cyan-500/30 group-hover:text-cyan-300 transition-all duration-300">
                       {t}
                     </li>
                   ))}

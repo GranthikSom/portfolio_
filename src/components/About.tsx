@@ -120,7 +120,7 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             transition={{ staggerChildren: 0.2 }}
-            className="glass-card p-8 rounded-2xl text-slate-300 leading-relaxed space-y-6 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all duration-500"
+            className="glass-card p-8 rounded-2xl text-slate-300 text-base md:text-lg leading-relaxed md:leading-8 space-y-6 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all duration-500"
           >
             <motion.p variants={textVariants}>
               I am a versatile Software Engineer with a deep passion for building robust, high-performance applications across multiple domains. My journey in tech spans from crafting pixel-perfect, zero-polling macOS desktop widgets to architecting scalable and highly performant backend systems.
