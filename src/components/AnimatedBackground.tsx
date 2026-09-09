@@ -27,7 +27,7 @@ export default function AnimatedBackground() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-lighten"
         >
-          <source src="/background.mp4" type="video/mp4" />
+          <source src="/Video background main.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-[#fdf2f8]/5 via-[#172554]/40 to-[#0a0f25] mix-blend-overlay" />
       </motion.div>
