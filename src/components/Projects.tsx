@@ -161,11 +161,11 @@ export default function Projects() {
                   {project.title}
                 </h3>
                 
-                <p className="text-slate-300 text-sm md:text-base lg:text-lg mb-8 flex-grow relative z-10 font-medium leading-relaxed group-hover:text-white transition-colors duration-300">
+                <p className="hidden md:block text-slate-300 text-sm md:text-base lg:text-lg mb-8 flex-grow relative z-10 font-medium leading-relaxed group-hover:text-white transition-colors duration-300">
                   {project.description}
                 </p>
                 
-                <ul className="flex flex-wrap gap-2 md:gap-3 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-300 relative z-10 mt-auto">
+                <ul className="hidden md:flex flex-wrap gap-2 md:gap-3 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-300 relative z-10 mt-auto">
                   {project.tech.map((t, i) => (
                     <li key={i} className="px-3 py-2 rounded-md bg-white/8 border border-white/15 group-hover:border-cyan-500/30 group-hover:text-cyan-300 transition-all duration-300">
                       {t}
