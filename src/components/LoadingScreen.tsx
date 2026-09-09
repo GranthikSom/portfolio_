@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Coffee } from "lucide-react";
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
@@ -45,14 +46,20 @@ export default function LoadingScreen() {
           <div className="absolute w-72 h-72 rounded-full bg-gradient-to-tr from-amber-500/20 via-pink-500/20 to-purple-500/20 blur-[100px] pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center max-w-xs w-full px-6">
-            <motion.h1
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-2xl md:text-3xl font-black tracking-tighter uppercase mb-2 text-white"
+              className="mb-6 relative flex items-center justify-center"
             >
-              Granthik Som
-            </motion.h1>
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+                className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_30px_rgba(251,146,60,0.25)] text-amber-400 flex items-center justify-center"
+              >
+                <Coffee size={38} strokeWidth={1.75} />
+              </motion.div>
+            </motion.div>
 
             <span className="text-xs font-mono tracking-[0.25em] text-slate-400 uppercase mb-8">
               Initializing... {progress}%
