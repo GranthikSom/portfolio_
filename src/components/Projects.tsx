@@ -161,7 +161,7 @@ export default function Projects() {
                   {project.title}
                 </h3>
                 
-                <p className="hidden md:block text-slate-300/80 text-base lg:text-lg mb-8 flex-grow relative z-10 font-medium leading-relaxed group-hover:text-white transition-colors duration-300">
+                <p className="hidden md:block text-slate-300 text-base lg:text-lg mb-8 flex-grow relative z-10 font-medium leading-relaxed group-hover:text-white transition-colors duration-300">
                   {project.description}
                 </p>
                 

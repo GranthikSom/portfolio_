@@ -297,7 +297,7 @@ export default function Hero() {
 
               <div className="text-center mb-8 w-full px-2 relative z-10">
                 <h3 className="text-2xl font-black text-white truncate mb-2 drop-shadow-lg tracking-tight">{currentSong.title}</h3>
-                <p className="text-pink-200/60 font-bold text-xs tracking-[0.2em] uppercase">{currentSong.artist}</p>
+                <p className="text-pink-200/80 font-bold text-xs tracking-[0.2em] uppercase">{currentSong.artist}</p>
               </div>
 
               <div className="w-full flex flex-col gap-4 mb-8 relative z-10">
@@ -322,7 +322,7 @@ export default function Hero() {
                   />
                 </div>
                 
-                <div className="flex justify-between text-[10px] text-pink-200/60 font-bold font-mono tracking-widest">
+                <div className="flex justify-between text-[10px] text-pink-200/80 font-bold font-mono tracking-widest">
                   <span>{formatTime(currentTime)}</span>
                   <span>{formatTime(duration)}</span>
                 </div>
@@ -332,7 +332,7 @@ export default function Hero() {
                 <motion.button 
                   whileHover={{ scale: 1.2, color: "#fff" }} whileTap={{ scale: 0.9 }}
                   onClick={playPrev} 
-                  className="p-2 text-pink-200/60 transition-colors"
+                  className="p-2 text-pink-200/80 transition-colors"
                 >
                   <FaStepBackward size={20} />
                 </motion.button>
@@ -349,7 +349,7 @@ export default function Hero() {
                 <motion.button 
                   whileHover={{ scale: 1.2, color: "#fff" }} whileTap={{ scale: 0.9 }}
                   onClick={playNext} 
-                  className="p-2 text-pink-200/60 transition-colors"
+                  className="p-2 text-pink-200/80 transition-colors"
                 >
                   <FaStepForward size={20} />
                 </motion.button>

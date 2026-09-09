@@ -100,7 +100,7 @@ export default function Navbar() {
               className="fixed top-0 left-0 bottom-0 w-[75vw] max-w-xs z-[100] bg-slate-900 border-r border-white/10 flex flex-col p-8 md:hidden shadow-2xl"
             >
               <div className="flex justify-between items-center mb-10">
-                <span className="text-sm font-black text-white/50 tracking-widest uppercase">Navigation</span>
+                <span className="text-sm font-black text-white/60 tracking-widest uppercase">Navigation</span>
                 <button 
                   className="text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                   onClick={() => setMobileOpen(false)}
@@ -115,7 +115,7 @@ export default function Navbar() {
                     key={item}
                     href={`#${item.toLowerCase()}`}
                     onClick={() => setMobileOpen(false)}
-                    className="text-white/80 hover:text-white hover:translate-x-2 transition-all"
+                    className="text-white/90 hover:text-white hover:translate-x-2 transition-all"
                   >
                     {item}
                   </Link>

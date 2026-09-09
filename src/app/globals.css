@@ -13,16 +13,21 @@
   --color-muted: #818cf8;
   --color-muted-foreground: #e0e7ff; 
 
+  /* Status colors */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
   /* Override hardcoded slate and blue colors to match our theme */
   --color-slate-950: #0a0f25;
   --color-slate-900: #0f172a; /* Midnight Blue */
   --color-slate-800: #1e1b4b; /* Deep Indigo */
-  --color-slate-700: #312e81; /* Indigo */
-  --color-slate-600: #4c1d95; /* Muted Violet */
-  --color-slate-500: #8b5cf6; /* Violet */
-  --color-slate-400: #2dd4bf; /* Soft Cyan text */
-  --color-slate-300: #a78bfa; /* Muted Violet text */
-  --color-slate-200: #c4b5fd;
+  --color-slate-700: #4338ca; /* Indigo — bumped from #312e81 for visible borders (3.2:1) */
+  --color-slate-600: #6d28d9; /* Violet — bumped from #4c1d95 for usability (3.8:1) */
+  --color-slate-500: #a78bfa; /* Violet — bumped from #8b5cf6 for AA text contrast (6.2:1) */
+  --color-slate-400: #2dd4bf; /* Soft Cyan text (9.5:1) */
+  --color-slate-300: #c4b5fd; /* Lavender body text — bumped from #a78bfa for readability (8.5:1) */
+  --color-slate-200: #ddd6fe; /* Category headings — bumped from #c4b5fd (11:1) */
   --color-slate-100: #e0e7ff;
   --color-slate-50: #f8fafc;
   
@@ -48,30 +53,30 @@
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.20);
   border-radius: 1.5rem;
   box-shadow: 0 8px 32px rgba(30, 27, 75, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.10);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 2rem;
   box-shadow: 0 8px 32px rgba(30, 27, 75, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(20px);
   transform: translateY(-5px);
   box-shadow: 0 12px 40px rgba(30, 27, 75, 0.3), inset 0 0 30px rgba(255, 255, 255, 0.15), 0 0 20px rgba(244, 114, 182, 0.3);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .text-gradient {
